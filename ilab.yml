@@ -83,9 +83,3 @@
             - "\n"
             - "###"
       delegate_to: localhost
-
-curl -X POST https://localhost:8443/v1/completions   -H 'Content-Type: application/json'   -H 'Authorization: Bearer testingchatbot'   -d '{
-      "model": "/home/ubuntu/models/llama-3",
-      "prompt": "What is the capital of France?",
-      "max_tokens": 6
-  }'
