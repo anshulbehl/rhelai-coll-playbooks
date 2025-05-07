@@ -1,4 +1,10 @@
 ---
+- name: Install and provision nginx proxy
+  gather_facts: false
+  hosts: all
+  roles:
+    - role: infra.ai.nginx_proxy
+
 - name: Setup RHEL AI configuration
   hosts: all
   gather_facts: true
