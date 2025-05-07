@@ -73,7 +73,7 @@
 
     - name: Ask model a question 1
       redhat.ai.completion:
-        base_url: "http://{{ rhelai_host }}:{{ rhelai_sec_port }}"
+        base_url: "https://{{ rhelai_host }}:{{ rhelai_sec_port }}"
         validate_certs: false
         token: "{{ rhelai_api_token }}"
         prompt: "\n\n### Instructions:\nCapital of India?\n\n### Response:\n"
@@ -82,7 +82,7 @@
 
     - name: Ask model a question 2
       redhat.ai.completion:
-        base_url: "http://{{ rhelai_host }}:{{ rhelai_sec_port }}"
+        base_url: "https://{{ rhelai_host }}:{{ rhelai_sec_port }}"
         validate_certs: false
         token: "{{ rhelai_api_token }}"
         raw_input:
