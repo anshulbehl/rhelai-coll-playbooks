@@ -8,18 +8,18 @@
     rhelai_sec_port: 8443
     rhelai_gpu_count: 1
   tasks:
-    # - name: Ensure firewalld is running
-    #   ansible.builtin.service:
-    #     name: firewalld
-    #     state: started
-    #     enabled: true
+    - name: Allow TCP traffic on port
+      community.general.iptables:
+        chain: INPUT
+        protocol: tcp
+        destination_port: "{{ rhelai_port }}"
+        jump: ACCEPT
+        state: present
+      become: true
 
-    # - name: Open port
-    #   ansible.posix.firewalld:
-    #     port: "{{ rhelai_port }}/tcp"
-    #     permanent: true
-    #     state: enabled
-    #     immediate: true
+    - name: Save iptables rules
+      ansible.builtin.command: iptables-save > /etc/sysconfig/iptables
+      become: true
 
     - name: Create /etc/ilab
       ansible.builtin.file:
