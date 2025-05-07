@@ -148,7 +148,7 @@
         rhelai_public_ip: >-
           {{
             (rhelai_aws_eip if (rhelai_aws_eip is defined and rhelai_aws_eip | length > 0)
-            else ec2_instance.instances[0].public_ip_address)
+            else ec2_info_result.instances[0].public_ip_address)
           }}
 
     - name: Wait for SSH to be available on the instance
