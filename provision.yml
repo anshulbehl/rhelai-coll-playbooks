@@ -142,7 +142,7 @@
             ip: "{{ rhelai_aws_eip }}"
             state: present
           when: rhelai_aws_eip | length > 0
-      
+
     - name: Set public IP of the EC2 instance
       ansible.builtin.set_fact:
         rhelai_public_ip: >-
