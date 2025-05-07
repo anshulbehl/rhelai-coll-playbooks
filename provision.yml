@@ -132,6 +132,7 @@
               Environment: RHEL-AI
               Component: LLM-Serving
               owner: abehl
+              label: rhelai-controller
             manage_ec2_instance_wait_for_state: true
           when: ec2_info_result.instances is not defined or ec2_info_result.instances | length == 0
 
