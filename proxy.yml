@@ -1,0 +1,6 @@
+---
+- name: Install and provision nginx proxy
+  gather_facts: false
+  hosts: all
+  roles:
+    - role: infra.ai.nginx_proxy
