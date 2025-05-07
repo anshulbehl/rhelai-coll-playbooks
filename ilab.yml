@@ -4,7 +4,7 @@
   gather_facts: true
   vars:
     rhelai_host: "{{ hostvars[inventory_hostname].ansible_host | default(inventory_hostname) }}"
-    rhelai_port: 8443
+    rhelai_port: 8000
     rhelai_gpu_count: 1
   tasks:
     # - name: Ensure firewalld is running
