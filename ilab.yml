@@ -19,7 +19,7 @@
         permanent: true
         state: enabled
         immediate: true
-        
+
     - name: Create /etc/ilab
       ansible.builtin.file:
         name: /etc/ilab/
