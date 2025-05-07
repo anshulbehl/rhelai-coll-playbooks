@@ -9,12 +9,7 @@
     rhelai_gpu_count: 1
   tasks:
     - name: Allow TCP traffic on port
-      community.general.iptables:
-        chain: INPUT
-        protocol: tcp
-        destination_port: "{{ rhelai_port }}"
-        jump: ACCEPT
-        state: present
+      ansible.builtin.command: "iptables -A INPUT -p tcp --dport {{ rhelai_port }} -j ACCEPT"
       become: true
 
     - name: Save iptables rules
