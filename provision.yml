@@ -142,3 +142,20 @@
             ip: "{{ rhelai_aws_eip }}"
             state: present
           when: rhelai_aws_eip | length > 0
+      
+    - name: Set public IP of the EC2 instance
+      ansible.builtin.set_fact:
+        rhelai_public_ip: >-
+          {{
+            (rhelai_aws_eip if (rhelai_aws_eip is defined and rhelai_aws_eip | length > 0)
+            else ec2_instance.instances[0].public_ip_address)
+          }}
+
+    - name: Wait for SSH to be available on the instance
+      ansible.builtin.wait_for:
+        host: "{{ rhelai_public_ip }}"
+        port: 22
+        timeout: 300
+        delay: 10
+        state: started
+      delegate_to: localhost
