@@ -4,21 +4,21 @@
   gather_facts: true
   vars:
     rhelai_host: "{{ hostvars[inventory_hostname].ansible_host | default(inventory_hostname) }}"
-    rhelai_port: 8000
+    rhelai_port: 8443
     rhelai_gpu_count: 1
   tasks:
-    - name: Ensure firewalld is running
-      ansible.builtin.service:
-        name: firewalld
-        state: started
-        enabled: true
+    # - name: Ensure firewalld is running
+    #   ansible.builtin.service:
+    #     name: firewalld
+    #     state: started
+    #     enabled: true
 
-    - name: Open port
-      ansible.posix.firewalld:
-        port: "{{ rhelai_port }}/tcp"
-        permanent: true
-        state: enabled
-        immediate: true
+    # - name: Open port
+    #   ansible.posix.firewalld:
+    #     port: "{{ rhelai_port }}/tcp"
+    #     permanent: true
+    #     state: enabled
+    #     immediate: true
 
     - name: Create /etc/ilab
       ansible.builtin.file:
