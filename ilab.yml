@@ -12,8 +12,8 @@
       ansible.builtin.command: "iptables -A INPUT -p tcp --dport {{ rhelai_port }} -j ACCEPT"
       become: true
 
-    - name: Save iptables rules
-      ansible.builtin.command: iptables-save > /etc/sysconfig/iptables
+    - name: Save iptables rules persistently
+      ansible.builtin.shell: iptables-save > /etc/sysconfig/iptables
       become: true
 
     - name: Create /etc/ilab
